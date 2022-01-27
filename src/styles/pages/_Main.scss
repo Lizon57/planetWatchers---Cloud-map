@@ -1,0 +1,92 @@
+main.app-main-container {
+  h2.main-title {
+    color: $cyan;
+    margin: 0.5rem 0;
+
+    @include for-mobile-layout {
+      font-size: 1.5rem;
+    }
+
+    @include not-for-mobile-layout {
+      font-size: 2.5rem;
+    }
+  }
+
+  div.maxCC-indicator {
+    margin-block-end: 0.5rem;
+    text-align: center;
+
+    @include not-for-mobile-layout {
+      font-size: 21px;
+    }
+  }
+
+  section.imgs-display-container {
+    flex-grow: 1;
+    width: 100%;
+
+    div.imgs-container {
+      gap: 1rem;
+
+      img {
+        padding: 0.5rem;
+        max-height: 60vh;
+
+        @include for-mobile-layout {
+          max-width: 40vw;
+        }
+      }
+    }
+
+    div.opts-btns {
+      gap: 1rem;
+      margin: 0.5rem 0;
+
+      @include for-mobile-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @include not-for-mobile-layout{
+        justify-content: center;
+      }
+
+      &.bright {
+        span {
+          color: white;
+          background-color: $dark-cyan;
+
+          @include hover-supported {
+            &:hover {
+              background-color: $cyan;
+            }
+          }
+        }
+      }
+
+      &.dark {
+        span {
+          background-color: white;
+          color: $cyan;
+
+          @include hover-supported {
+            &:hover {
+              background-color: $dark-cyan;
+              color: white;
+            }
+          }
+        }
+      }
+
+      span {
+        cursor: pointer;
+        user-select: none;
+        border-radius: 3px;
+        padding: 12px 24px;
+        max-width: max-content;
+
+        transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+      }
+    }
+  }
+}
