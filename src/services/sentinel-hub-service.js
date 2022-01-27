@@ -1,5 +1,6 @@
 import axios from "axios"
 import QueryString from "qs"
+import { dateService } from "./date-service"
 
 const _clientId = 'f4ab1100-68d7-437e-8c3c-e87022ce7db5'
 const _clientSecret = ',Bm4|87PYb_?N-}ZzZjGk1/j?D>qF3e:Y-LzIhF4'
@@ -27,7 +28,7 @@ async function getToken() {
     }
 }
 
-function getDefReqBody(maxCC) {
+function getReqBody(maxCC = 30, dates = dateService.getRandomDates()) {
     return {
         "input": {
             "bounds": {
@@ -357,8 +358,8 @@ function getDefReqBody(maxCC) {
                 {
                     "dataFilter": {
                         "timeRange": {
-                            "from": "2021-12-26T00:00:00Z",
-                            "to": "2022-01-26T23:59:59Z"
+                            "from": dates[0],
+                            "to": dates[1]
                         },
                         "maxCloudCoverage": maxCC,
                         "mosaickingOrder": "mostRecent"
@@ -386,5 +387,5 @@ function getDefReqBody(maxCC) {
 
 export const sentinelHubService = {
     getToken,
-    getDefReqBody
+    getDefReqBody: getReqBody
 }
