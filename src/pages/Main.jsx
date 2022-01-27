@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 import axios from "axios"
 import { useDebouncedCallback } from "use-debounce"
@@ -10,42 +10,79 @@ import dummyImg from "../assets/imgs/sample.png"
 
 
 export const Main = ({ appStore }) => {
-    const forceUpdate = useReducer(() => ({}))[1]
     const [maxCC, setMaxCC] = useState(30)
+    const [imgsSrc, setImgsSrc] = useState({ first: null, second: null })
+    const [imgsDates, setImgsDates] = useState({ first: dateService.getRandomDates(), second: dateService.getRandomDates() })
 
-    // const elImg1 = useRef(null)
-
-    // const shAxios = axios.create({
-    //     baseURL: 'https://services.sentinel-hub.com',
-    //     responseType: 'blob'
-    // })
+    const shAxios = axios.create({
+        baseURL: 'https://services.sentinel-hub.com',
+        responseType: 'blob'
+    })
 
     // useEffect(async () => {
-    //     const authorization = await sentinelHubService.getToken()
-    //     Object.assign(shAxios.defaults, { headers: { authorization } })
+    //     const first = await getImg(imgsDates.first)
+    //     const second = await getImg(imgsDates.second)
+    //     setImgsSrc({ first, second })
 
-    //     const img = await shAxios.post('/api/v1/process', sentinelHubService.getDefReqBody(maxCC, dateService.getRandomDates()))
-    //     const url = URL.createObjectURL(img.data)
-    //     elImg1.current.src = url
-    // }, [maxCC])
+    //     console.log(first, second)
+    //     console.log(imgsSrc)
+    // }, [maxCC, imgsDates])
 
-    const debouncedReplace = useDebouncedCallback(() => forceUpdate, 500)
+    const getImg = async (dates) => {
+        const authorization = await sentinelHubService.getToken()
+        Object.assign(shAxios.defaults, { headers: { authorization } })
+
+        const img = await shAxios.post('/api/v1/process', sentinelHubService.getDefReqBody(maxCC, dates))
+        return URL.createObjectURL(img.data)
+    }
+
+
+    const debouncedReplace = useDebouncedCallback(() => {
+        setImgsDates({ first: dateService.getRandomDates(), second: dateService.getRandomDates() })
+    }, 500)
 
     const debouncedSetMaxCC = useDebouncedCallback(newMaxCC => {
         if (newMaxCC > 100 || newMaxCC < 0) return
         setMaxCC(newMaxCC)
-        console.log(newMaxCC)
     }, 500)
+
+    const _getDatesTitle = (dates) => {
+        const fromDate = new Date(dates[0])
+        const toDate = new Date(dates[1])
+
+        return (
+            <div className="img-title">
+                <div>
+                    <span className="title">From:</span>
+                    <span className="date">{fromDate.toLocaleDateString()}</span>
+                </div>
+
+                <div>
+                    <span className="title">To:</span>
+                    <span className="date">{toDate.toLocaleDateString()}</span>
+                </div>
+            </div>
+        )
+    }
+
 
     return (
         <main className="app-main-container flex column align-center">
             <h2 className="main-title">Israel cloud Map</h2>
-            <div className="maxCC-indicator">Currently max cloud covarage: {maxCC}%</div>
+            <div className="maxCC-indicator">Max cloud covarage: {maxCC}%</div>
 
             <section className="imgs-display-container flex column">
                 <div className="imgs-container flex justify-center">
-                    <img src={dummyImg} />
-                    <img src={dummyImg} />
+                    <div className="img-with-title">
+                        {_getDatesTitle(imgsDates.first)}
+                        {/* <img src={imgsSrc.first} /> */}
+                        <img src={dummyImg} />
+                    </div>
+                    <div className="img-with-title">
+                        {_getDatesTitle(imgsDates.second)}
+                        {/* <img src={imgsSrc.second} /> */}
+                        <img src={dummyImg} />
+                    </div>
                 </div>
 
                 <div className={"opts-btns flex " + (appStore.isDarkMode ? 'dark' : 'bright')}>

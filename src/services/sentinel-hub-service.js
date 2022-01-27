@@ -12,14 +12,14 @@ async function getToken() {
         }
     }
 
-    const body = QueryString.stringify({
+    const reqBody = QueryString.stringify({
         client_id: _clientId,
         client_secret: _clientSecret,
         grant_type: 'client_credentials'
     })
 
     try {
-        const token = await axios.post('https://services.sentinel-hub.com/oauth/token', body, config)
+        const token = await axios.post('https://services.sentinel-hub.com/oauth/token', reqBody, config)
         return `Bearer ${token.data.access_token}`
     }
     catch (_err) {

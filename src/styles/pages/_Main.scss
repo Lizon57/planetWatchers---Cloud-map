@@ -28,6 +28,14 @@ main.app-main-container {
     div.imgs-container {
       gap: 1rem;
 
+      div.img-title {
+        font-size: 0.8rem;
+
+        span.title {
+          margin-inline-end: 0.5rem;
+        }
+      }
+
       img {
         padding: 0.5rem;
         max-height: 60vh;
@@ -47,7 +55,7 @@ main.app-main-container {
         align-items: center;
       }
 
-      @include not-for-mobile-layout{
+      @include not-for-mobile-layout {
         justify-content: center;
       }
 
