@@ -1,7 +1,7 @@
 import { utilService } from "./util-service"
 
 function getRandomDates() {
-    let currYear = new Date
+    let currYear = new Date()
     currYear = currYear.getFullYear()
 
     const firstDate = new Date(utilService.getRandomInt(2017, currYear - 1), utilService.getRandomInt(0, 5), 1)

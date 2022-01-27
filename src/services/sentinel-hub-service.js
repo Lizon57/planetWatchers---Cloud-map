@@ -24,7 +24,7 @@ async function getToken() {
     }
     catch (_err) {
         console.log(_err)
-        throw 'Cannot get token'
+        throw new Error('Cannot get token')
     }
 }
 

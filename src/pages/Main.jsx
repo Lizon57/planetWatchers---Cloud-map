@@ -6,7 +6,7 @@ import { useDebouncedCallback } from "use-debounce"
 import { sentinelHubService } from "../services/sentinel-hub-service"
 import { dateService } from "../services/date-service"
 
-import dummyImg from "../assets/imgs/sample.png"
+// import dummyImg from "../assets/imgs/sample.png"
 
 
 export const Main = ({ appStore }) => {
@@ -19,14 +19,14 @@ export const Main = ({ appStore }) => {
         responseType: 'blob'
     })
 
-    // useEffect(async () => {
-    //     const first = await getImg(imgsDates.first)
-    //     const second = await getImg(imgsDates.second)
-    //     setImgsSrc({ first, second })
-
-    //     console.log(first, second)
-    //     console.log(imgsSrc)
-    // }, [maxCC, imgsDates])
+    useEffect(() => {
+        const getImgsData = async () => {
+            const first = await getImg(imgsDates.first)
+            const second = await getImg(imgsDates.second)
+            setImgsSrc({ first, second })
+        }
+        getImgsData()
+    }, [maxCC, imgsDates])
 
     const getImg = async (dates) => {
         const authorization = await sentinelHubService.getToken()
@@ -75,13 +75,13 @@ export const Main = ({ appStore }) => {
                 <div className="imgs-container flex justify-center">
                     <div className="img-with-title">
                         {_getDatesTitle(imgsDates.first)}
-                        {/* <img src={imgsSrc.first} /> */}
-                        <img src={dummyImg} />
+                        <img src={imgsSrc.first} alt={`Israel with ${maxCC}% cloud coverage`} />
+                        {/* <img src={dummyImg} /> */}
                     </div>
                     <div className="img-with-title">
                         {_getDatesTitle(imgsDates.second)}
-                        {/* <img src={imgsSrc.second} /> */}
-                        <img src={dummyImg} />
+                        <img src={imgsSrc.second} alt={`Israel with ${maxCC}% cloud coverage`} />
+                        {/* <img src={dummyImg} /> */}
                     </div>
                 </div>
 
