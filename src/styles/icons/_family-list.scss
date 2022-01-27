@@ -2,6 +2,8 @@
 .icn {
   color: currentColor;
 
+  &-moon,
+  &-sun,
   &-arrow {
     @extend .icn;
     @include fas;

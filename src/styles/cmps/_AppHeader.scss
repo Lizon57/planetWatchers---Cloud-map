@@ -5,6 +5,11 @@ header.app-header {
   @include layout-grid-columns;
   grid-template-rows: max-content;
 
+  &.bright {
+    background-color: white;
+    color: black;
+  }
+
   div.header-content-container {
     grid-column: 2/3;
 
