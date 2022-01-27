@@ -1,0 +1,13 @@
+footer.app-footer {
+  grid-row: 3/4;
+  grid-column: 1/-1;
+  display: grid;
+  @include layout-grid-columns;
+  grid-template-rows: max-content;
+  padding: 0.5rem 0;
+
+  div.footer-content-container {
+    grid-column: 2/3;
+    justify-self: center;
+  }
+}

@@ -1,0 +1,72 @@
+/* Breakpoint */
+@mixin for-mobile-layout {
+  @media (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin not-for-mobile-layout {
+  @media (min-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin for-narrow-layout {
+  @media (min-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin for-normal-layout {
+  @media (min-width: $narrow-breakpoint) {
+    @content;
+  }
+}
+
+@mixin for-wide-layout {
+  @media (min-width: $normal-breakpoint) {
+    @content;
+  }
+}
+
+@mixin not-for-large-layout {
+  @media (max-width: $large-breakpoint) {
+    @content;
+  }
+}
+
+@mixin for-large-layout {
+  @media (min-width: $large-breakpoint) {
+    @content;
+  }
+}
+
+// Mixins for icons
+@mixin fab {
+  font-family: fab;
+}
+
+@mixin fas {
+  font-family: fas;
+}
+
+@mixin far {
+  font-family: far;
+}
+
+// Mixins for layout
+@mixin layout-grid-columns {
+  grid-template-columns:
+    minmax(1rem, auto)
+    minmax(auto, 1300px)
+    minmax(1rem, auto);
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}

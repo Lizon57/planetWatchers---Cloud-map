@@ -1,0 +1,29 @@
+header.app-header {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  display: grid;
+  @include layout-grid-columns;
+  grid-template-rows: max-content;
+
+  div.header-content-container {
+    grid-column: 2/3;
+
+    @include for-mobile-layout {
+      height: 4.5rem;
+
+      img.logo {
+        margin: 8px 0;
+        height: 2rem;
+      }
+    }
+
+    @include not-for-mobile-layout {
+      height: 7.125rem;
+
+      img.logo {
+        margin: 15px 0;
+        height: 3.5rem;
+      }
+    }
+  }
+}

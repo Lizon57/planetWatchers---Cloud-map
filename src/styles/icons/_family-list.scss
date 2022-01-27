@@ -1,0 +1,18 @@
+// List of font-awsome icons using fas (solid) family
+.icn {
+  color: currentColor;
+
+  &-arrow {
+    @extend .icn;
+    @include fas;
+  }
+}
+
+.icn-arrow {
+  &-top,
+  &-right,
+  &-down,
+  &-left {
+    @extend .icn-arrow;
+  }
+}
