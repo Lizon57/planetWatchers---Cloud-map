@@ -27,3 +27,7 @@ Also, I've had to implement two buttons:
 
 1. npm i
 2. npm start
+
+## Live app:
+
+[Live app](https://lizon57.github.io/planetWatchers---Cloud-map/)
