@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/planetWatchers---Cloud-map/static/css/main.eed79dba.css",
+    "main.js": "/planetWatchers---Cloud-map/static/js/main.87ff0397.js",
+    "static/media/fa-solid.woff2": "/planetWatchers---Cloud-map/static/media/fa-solid.ada6e6df937f7e5e8b79.woff2",
+    "static/media/fa-brands.woff2": "/planetWatchers---Cloud-map/static/media/fa-brands.c1210e5ebe4344da5083.woff2",
+    "static/media/HelveticaNeue_Medium.ttf": "/planetWatchers---Cloud-map/static/media/HelveticaNeue_Medium.64ab5024acf8e1619abc.ttf",
+    "static/media/HelveticaNeue_Roman.otf": "/planetWatchers---Cloud-map/static/media/HelveticaNeue_Roman.29f06aeb3e17d185102f.otf",
+    "static/media/logo-dark.png": "/planetWatchers---Cloud-map/static/media/logo-dark.b931adfcbef4d652f4b2.png",
+    "static/media/fa-regular.woff2": "/planetWatchers---Cloud-map/static/media/fa-regular.68c5af1f48e2bfca1e57.woff2",
+    "index.html": "/planetWatchers---Cloud-map/index.html",
+    "main.eed79dba.css.map": "/planetWatchers---Cloud-map/static/css/main.eed79dba.css.map",
+    "main.87ff0397.js.map": "/planetWatchers---Cloud-map/static/js/main.87ff0397.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eed79dba.css",
+    "static/js/main.87ff0397.js"
+  ]
+}
