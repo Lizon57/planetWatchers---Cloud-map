@@ -32,6 +32,7 @@ export const Main = ({ appStore }) => {
         const authorization = await sentinelHubService.getToken()
         Object.assign(shAxios.defaults, { headers: { authorization } })
 
+
         const img = await shAxios.post('/api/v1/process', sentinelHubService.getDefReqBody(maxCC, dates))
         return URL.createObjectURL(img.data)
     }
@@ -68,7 +69,7 @@ export const Main = ({ appStore }) => {
 
     return (
         <main className="app-main-container flex column align-center">
-            <h2 className="main-title">Israel cloud Map</h2>
+            <h2 className="main-title">Israel cloud map</h2>
             <div className="maxCC-indicator">Max cloud covarage: {maxCC}%</div>
 
             <section className="imgs-display-container flex column">
